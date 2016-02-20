@@ -22,6 +22,5 @@ public class FileLockTest {
 			logger.info("File not found Exception!");
 			e.printStackTrace();
 		} 
-		
 	}
 }
