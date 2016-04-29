@@ -12,8 +12,8 @@ public class AtomicReferenceExample {
 	public static void main(String[] args) throws InterruptedException {
 		Thread t1 = new Thread(new MyRun1());
 		Thread t2 = new Thread(new MyRun2());
-		message = "hello";
-		person = new Person("Phillip", 23);
+		message = "origin";
+		person = new Person("origin-person", 0);
 		aRmessage = new AtomicReference<String>(message);
 		aRperson = new AtomicReference<Person>(person);
 		System.out.println("Message is: " + message
@@ -33,26 +33,26 @@ public class AtomicReferenceExample {
 	static class MyRun1 implements Runnable {
 
 		public void run() {
-			aRmessage.compareAndSet(message, "Thread 1");
-			message = message.concat("-Thread 1!");
+			aRmessage.compareAndSet(message, "thread0-message");
+			message = message.concat("-concat-something-thread0");
 			person.setAge(person.getAge()+1);
-			person.setName("Thread 1");
-			aRperson.getAndSet(new Person("Thread 1", 1));
-			System.out.println("\n" + Thread.currentThread().getName() +" Values " 
+			person.setName("person-thread0");
+			aRperson.getAndSet(new Person("thread0", 100));
+			System.out.println("\n" + Thread.currentThread().getName() +" Values: " 
 					+ message + " - " + person.toString());
 			System.out.println("\n" + Thread.currentThread().getName() +" Atomic References " 
-					+ message + " - " + person.toString());
+					+ aRmessage.get() + " - " + aRperson.get().toString());
 		}		
 	}
 	
 	static class MyRun2 implements Runnable {
 
 		public void run() {
-			message = message.concat("-Thread 2");
+			message = message.concat("-concat-something-thread1");
 			person.setAge(person.getAge()+2);
-			person.setName("Thread 2");
-			aRmessage.lazySet("Thread 2");
-			aRperson.set(new Person("Thread 2", 2));
+			person.setName("person-thread1");
+			aRmessage.lazySet("thread1-message");
+			aRperson.set(new Person("thread1", 101));
 			System.out.println("\n" + Thread.currentThread().getName() +" Values: " 
 					+ message + " - " + person.toString());
 			System.out.println("\n" + Thread.currentThread().getName() +" Atomic References: " 
