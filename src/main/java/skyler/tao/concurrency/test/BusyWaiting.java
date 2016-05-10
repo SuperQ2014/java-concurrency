@@ -4,7 +4,7 @@ public class BusyWaiting {
 
 	public static void main(String[] args) throws InterruptedException {
 		
-		//从CPU的使用率来看，Busy Waiting不是很好的一种策略，除非等待的阈值很小。更佳的方法是，使用sleep或become inactive，知道接收到开始工作的signal
+		//从CPU的使用率来看，Busy Waiting不是很好的一种策略，除非等待的阈值很小。更佳的方法是，使用sleep或become inactive，直到接收到开始工作的signal
 		Thread thread = new Thread(new Runnable() {
 			@Override
 			public void run() {
