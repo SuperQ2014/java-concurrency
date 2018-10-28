@@ -6,10 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="concurrency" />
+        <module name="book-art-of-concurrency" />
+        <module name="book-java-multi-thread-programming" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="book-art-of-concurrency" target="1.5" />
+      <module name="book-java-multi-thread-programming" target="1.5" />
       <module name="concurrency" target="1.5" />
     </bytecodeTargetLevel>
   </component>

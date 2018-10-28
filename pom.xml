@@ -7,7 +7,8 @@
 	<version>0.0.1</version>
 	<modules>
 		<module>book-java-multi-thread-programming</module>
-	</modules>
+        <module>book-art-of-concurrency</module>
+    </modules>
 	<packaging>pom</packaging>
 
 	<name>concurrency</name>
